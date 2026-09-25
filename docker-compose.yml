@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  wallet-bot:
+    build: .
+    container_name: wallet_telegram_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=Asia/Riyadh
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
